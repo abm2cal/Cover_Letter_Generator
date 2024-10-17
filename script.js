@@ -6,14 +6,14 @@ const hooks = [
 ];
 
 // Body paragraph
-const body = `\n\nIn my role as a Technical Project Lead at Cummins, I successfully addressed the challenge of ambiguity and evolving requirements while leading a cross-functional team. One of my key achievements was resolving persistent Particulate Matter sensor failures that had been costing the company $1.5 million in warranty claims. I developed a robust solution by crafting test protocols for thermal, vibration, and performance validation, ensuring a 30% design margin. Through this process, I collaborated closely with operations, supply chain, and manufacturing teams to ensure a seamless transition from design to field implementation.
+const body = `In my role as a Technical Project Lead at Cummins, I successfully addressed the challenge of ambiguity and evolving requirements while leading a cross-functional team. One of my key achievements was resolving persistent Particulate Matter sensor failures that had been costing the company $1.5 million in warranty claims. I developed a robust solution by crafting test protocols for thermal, vibration, and performance validation, ensuring a 30% design margin. Through this process, I collaborated closely with operations, supply chain, and manufacturing teams to ensure a seamless transition from design to field implementation.
 
 Additionally, as a Graduate Research Assistant at the University of Washington’s Transformative Robotics Lab, I designed and prototyped an innovative 3D-printed soft robotic hand under fluid project goals. Using air-pressure control and servo-actuated tendons, I adapted the design to meet evolving functional requirements and validated the dexterous manipulation capabilities of the robotic hand. This experience honed my ability to navigate uncertainty while delivering a fully functional and tested solution.
 
 Both experiences reflect my ability to work through complex, interdisciplinary challenges, whether by leveraging technical skills or fostering collaboration across teams—skills I am eager to bring to this position.`;
 
 // Conclusion template
-const conclusionTemplate = `\n\nI am eager to bring my expertise in mechanical design, cross-functional collaboration, and innovation to this role. The opportunity to solve complex, evolving challenges excites me, and I am confident that my skills and passion for engineering will make a meaningful impact on your team at <company>. Thank you for your consideration.`;
+const conclusionTemplate = `I am eager to bring my expertise in mechanical design, cross-functional collaboration, and innovation to this role. The opportunity to solve complex, evolving challenges excites me, and I am confident that my skills and passion for engineering will make a meaningful impact on your team at <company>. Thank you for your consideration.`;
 
 // Generate cover letter function
 function generateCoverLetter() {
@@ -27,7 +27,9 @@ function generateCoverLetter() {
     const randomHook = hooks[Math.floor(Math.random() * hooks.length)];
     const conclusion = conclusionTemplate.replace("<company>", companyName);
     
-    const coverLetter = `${randomHook}\n\n${body}\n\n${conclusion}`;
+    // Create the formatted cover letter with separate paragraphs
+    const coverLetter = `<p>${randomHook}</p><p>${body.replace(/\n/g, '</p><p>')}</p><p>${conclusion}</p>`;
     
-    document.getElementById("cover-letter").textContent = coverLetter;
+    // Display the cover letter in HTML format
+    document.getElementById("cover-letter").innerHTML = coverLetter;
 }
